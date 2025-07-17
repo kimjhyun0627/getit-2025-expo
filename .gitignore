@@ -34,3 +34,15 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
+
+# IDEs
+.idea/
+.vscode/
+*.sublime-workspace
+
+# logs
+*.log
+*.log.*
+
+# other
+.prettierrc
