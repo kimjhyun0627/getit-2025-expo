@@ -1,14 +1,11 @@
 import { View, Text, Image, StyleSheet } from 'react-native';
-import FoodItem from './src/components/FoodItem.jsx';
+import NameInput from './components/NameInput.jsx';
+import Calculator from './components/Calculator.jsx';
 
 export default function App() {
-	const foods = ['김치찌개', '치킨', '피자', '떡볶이', '초밥'];
-
 	return (
 		<View style={styles.container}>
-			{foods.map((food, index) => (
-				<FoodItem key={index} food={food} />
-			))}
+			<Calculator />
 		</View>
 	);
 }
