@@ -1,34 +1,35 @@
-import { View, Text, Image, StyleSheet } from 'react-native';
-import NameInput from './components/NameInput.jsx';
-import Calculator from './components/Calculator.jsx';
+// App.jsx
+import React, { useState } from 'react';
+import { SafeAreaView, StyleSheet } from 'react-native';
+import TodoInput from './components/TodoInput';
+import TodoList from './components/TodoList';
 
 export default function App() {
+	const [tasks, setTasks] = useState([]);
+
+	const addTask = (text) => {
+		setTasks((prev) => [
+			{ id: Date.now().toString(), text, done: false },
+			...prev,
+		]);
+	};
+
+	const removeTask = (id) => {
+		setTasks((prev) => prev.filter((item) => item.id !== id));
+	};
+
 	return (
-		<View style={styles.container}>
-			<Calculator />
-		</View>
+		<SafeAreaView style={styles.container}>
+			<TodoInput onAdd={addTask} />
+			<TodoList data={tasks} onRemove={removeTask} />
+		</SafeAreaView>
 	);
 }
 
 const styles = StyleSheet.create({
 	container: {
-		alignItems: 'center',
-		justifyContent: 'center',
 		flex: 1,
+		padding: 20,
 		backgroundColor: '#f0f0f0',
-	},
-	image: {
-		width: 150,
-		height: 150,
-		borderRadius: 75,
-		marginBottom: 20,
-	},
-	name: {
-		fontSize: 24,
-		fontWeight: 'bold',
-	},
-	description: {
-		fontSize: 16,
-		color: 'gray',
 	},
 });
